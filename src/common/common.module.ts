@@ -1,9 +1,10 @@
 import { Global, Module } from "@nestjs/common";
 import { ProviderService } from "./utils";
+import { ConfigModule } from "@nestjs/config";
 
 @Global()
 @Module({
-  imports: [],
+  imports: [ConfigModule],
   providers: [
     ProviderService
   ],
