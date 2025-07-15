@@ -4,6 +4,7 @@ pragma solidity ^0.8.19;
 contract TestContract {
     address public ownerAddress;
     bytes32[] public testStructKeys;
+    string public contractName;
 
     constructor() {
         ownerAddress = msg.sender;
@@ -20,6 +21,10 @@ contract TestContract {
     modifier onlyOwner() {
         require(msg.sender == ownerAddress, "Only the owner can call this function");
         _;
+    }
+
+    function setContractName(string memory _name) public onlyOwner {
+        contractName = _name;
     }
 
     function setTestStruct(
