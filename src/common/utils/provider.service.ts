@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { ethers } from "ethers";
+import * as P2PTransferProject from "./abis/P2PTransferProject.json";
 
 @Injectable()
 export class ProviderService {
@@ -23,4 +24,12 @@ export class ProviderService {
             throw new Error(`Failed to create provider or wallet: ${error.message}`);
         }
     }
+
+    async getAbiAndBytecode(){
+        return {
+            abi: P2PTransferProject.abi,
+            bytecode: P2PTransferProject.bytecode
+        };
+    }
+
 }

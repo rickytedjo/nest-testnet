@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { ContractService } from "../services";
 import { ProviderService } from "src/common/utils";
 import { CreateContractDto } from "../dtos";
+import { CreateTransactionDto } from "../dtos/createTransaction.dto";
 
 @Controller('contract')
 export class ContractController {
@@ -17,18 +18,16 @@ export class ContractController {
     }
 
     @Post(':id')
-    async createTransaction(id: string) {
+    async createTransaction(@Param('id') id: string,
+        @Body() dto: CreateTransactionDto
+    ) {
         // Logic to create a transaction for a contract
+        return this.contractService.createTransaction(id, dto);
     }
-
-    @Get(':id')
-    async getContract(id: string) {
-        // Logic to get a contract by ID
-    }
-
 
     @Get()
     async getAllContracts() {
         // Logic to get all contracts
+        return this.contractService.getAllContracts();
     }
 }
