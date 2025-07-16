@@ -4,38 +4,50 @@ import { Client } from 'pg'
 
 @Injectable()
 export class PostgresService {
-    private client: Client;
-    constructor(private readonly config: ConfigService) {
-      const connStr = this.config.get<string>('DATABASE_URL');
-      if (!connStr) {
-        throw new Error('DATABASE_URL is missing from configuration.');
-      }
+  private client: Client;
+  constructor(private readonly config: ConfigService) {
+    const connStr = this.config.get<string>('DATABASE_URL');
+    if (!connStr) {
+      throw new Error('DATABASE_URL is missing from configuration.');
+    }
+  
+    this.client = new Client({
+      connectionString: connStr,
+    });
+  }
+
+  async onModuleInit() {
+    console.log('Connecting to Postgres...');
+    await this.connect(); // or initialize pool
+  }
+
+  async onModuleDestroy() {
+    await this.disconnect();
+  }
+
+  async connect() {
+      await this.client.connect();
+  }
+
+  async disconnect() {
+      await this.client.end();
+  }
+
+  async getAll<T = any>(table: string, filters?: Record<string, any>): Promise<T[]> {
+    let query = `SELECT * FROM ${table}`;
+    const values: any[] = [];
     
-      this.client = new Client({
-        connectionString: connStr,
+    if (filters && Object.keys(filters).length > 0) {
+      const conditions = Object.entries(filters).map(([key, value], idx) => {
+        values.push(value);
+        // use LOWER() for Ethereum address comparison
+        return `LOWER(${key}) = LOWER($${idx + 1})`;
       });
+      query += ` WHERE ` + conditions.join(' AND ');
     }
-
-    async onModuleInit() {
-      console.log('Connecting to Postgres...');
-      await this.connect(); // or initialize pool
-    }
-
-    async onModuleDestroy() {
-      await this.disconnect();
-    }
-
-    async connect() {
-        await this.client.connect();
-    }
-
-    async disconnect() {
-        await this.client.end();
-    }
-
-    async getAll<T = any>(table: string): Promise<T[]> {
-    const res = await this.client.query(`SELECT * FROM ${table}`)
-    return res.rows
+  
+    const res = await this.client.query(query, values);
+    return res.rows;
   }
 
   async insert<T = any>(table: string, data: Record<string, any>): Promise<T> {
