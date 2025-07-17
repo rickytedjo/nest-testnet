@@ -1,6 +1,8 @@
-import { Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { ContractService } from "../services";
 import { ProviderService } from "src/common/utils";
+import { CreateContractDto } from "../dtos";
+import { CreateTransactionDto } from "../dtos/createTransaction.dto";
 
 @Controller('contract')
 export class ContractController {
@@ -10,39 +12,22 @@ export class ContractController {
     ) {}
 
     @Post()
-    async createContract() {
-        if (!this.providerService.checkProvider()) {
-            return new Error('Invalid provider configuration');
-        }
-        
+    async createContract(@Body() dto: CreateContractDto) {
         // Logic to create a contract
+        return this.contractService.createContract(dto);
     }
 
     @Post(':id')
-    async createTransaction(id: string) {
-        if (!this.providerService.checkProvider()) {
-            return new Error('Invalid provider configuration');
-        }
-
+    async createTransaction(@Param('id') id: string,
+        @Body() dto: CreateTransactionDto
+    ) {
         // Logic to create a transaction for a contract
+        return this.contractService.createTransaction(id, dto);
     }
-
-    @Get(':id')
-    async getContract(id: string) {
-        if (!this.providerService.checkProvider()) {
-            return new Error('Invalid provider configuration');
-        }
-
-        // Logic to get a contract by ID
-    }
-
 
     @Get()
     async getAllContracts() {
-        if (!this.providerService.checkProvider()) {
-            return new Error('Invalid provider configuration');
-        }
-
         // Logic to get all contracts
+        return this.contractService.getAllContracts();
     }
 }

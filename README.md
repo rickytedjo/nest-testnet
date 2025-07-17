@@ -1,98 +1,140 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+<br />
+<div>
+  <h3>Nest Testnet</h3>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+  <p>
+    <strong>Sepolia testing app running on NestJS</strong>
+    <br /><br />
+  </p>
+</div>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Stacks
+<div>
+<a href="https://nestjs.com/">
 
-## Description
+![Node.js Badge](https://img.shields.io/badge/Node.js-5FA04E?logo=nodedotjs&logoColor=fff&style=for-the-badge)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+</a>
 
-## Project setup
+<a href="https://nestjs.com/">
+
+![NestJS](https://img.shields.io/badge/NestJS-E0234E?logo=nestjs&logoColor=white&style=for-the-badge)
+
+</a>
+
+<a href="https://www.postgresql.org/">
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white&style=for-the-badge)
+
+</a>
+
+<a href="https://supabase.com">
+
+![Supabase](https://img.shields.io/badge/Supabase-000000?logo=supabase&logoColor=3ECF8E&style=for-the-badge)
+
+</a>
+
+<a href="https://ethers.org/">
+
+![Ethers Badge](https://img.shields.io/badge/Ethers-2535A0?logo=ethers&logoColor=fff&style=for-the-badge)
+
+</a>
+
+<a href="https://ethereum.org">
+
+![Ethereum Badge](https://img.shields.io/badge/Ethereum-3C3C3D?logo=ethereum&logoColor=fff&style=for-the-badge)
+
+</a>
+
+<a href="https://ethereum.org">
+
+![Solidity Badge](https://img.shields.io/badge/Solidity-363636?logo=solidity&logoColor=fff&style=for-the-badge)
+
+</a>
+
+</div>
+
+## Prerequisites
+
+Ensure you have the following installed:
+
+1. **Node.js** (v18 or higher) - [Download Node.js](https://nodejs.org/)
+2. **npm** (bundled with Node.js) or **Yarn** (latest version)
+3. **PostgreSQL Database** (v13 or higher) - [Download PostgreSQL](https://www.postgresql.org/) or [Host It On Supabase](https://supabase.com/)
+4. **Git** - [Download Git](https://git-scm.com/)
+5. **Infura Provider** - (https://www.infura.io/)
+6. **Metamask Account** - (https://www.metamask.io/)
+
+
+## 🚦 Installation
+
+### 1. Clone the Repository
 
 ```bash
-$ npm install
+git clone https://github.com/rickytedjo/nest-testnet
+cd nest-testnet
 ```
+--- 
+### 2. Install Dependencies
 
-## Compile and run the project
+Run the following command to install required packages:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
+or if using Yarn:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+yarn install
 ```
 
-## Deployment
+---
+### 3. Environment Setup
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Create a `.env` file in the root directory. Use the `.env.example` file as a template:
 
 ```bash
-$ npm install -g mau
-$ mau deploy
+cp .env.example .env
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Fill in the necessary environment variables in the `.env` file. For example:
 
-## Resources
+```env
+## SEPOLIA PROVIDER
+INFURIA_SEPOLIA_PROVIDER= # Your Infuria provider connection string.
+WALLET_KEY = # Your account's private key
 
-Check out a few resources that may come in handy when working with NestJS:
+## DATABASE
+DATABASE_URL= # Database connection string, format: postgresql://user:password@host:port/dbname
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+# CORS
+PORT = 3000 # The port this app runs on. Customizable to your needs.
+FRONTEND_URL="http://localhost:8000" # URL of the frontend application, used for CORS and redirects. Customizable to your needs.
 
-## Support
+---
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### 4. Database Setup
 
-## Stay in touch
+Ensure PostgreSQL is running and create a new database for the application:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```sql
+CREATE DATABASE your_database_name;
+```
 
-## License
+---
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+### 5. Start the Application
+
+Run the application in development mode:
+
+```bash
+npm run start:dev
+```
+
+---
+
+## Contact
+Ricky: <rickyputra.tedjo@gmail.com></br>
+
+Dayu: <dayumahara502@gmail.com>
