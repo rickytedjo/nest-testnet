@@ -152,6 +152,7 @@ export class ContractService {
             return {
                 contractAddress: contract.contractaddress,
                 contractName,
+                contractBalance: (await provider.getBalance(contract.contractaddress)).toString(),
                 transactions,
             };
         }));
