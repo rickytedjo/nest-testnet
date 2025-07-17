@@ -22,7 +22,7 @@ contract P2PTransferProject {
         _;
     }
 
-    constructor(string memory _name) {
+    constructor(string memory _name) payable {
         owner = msg.sender;
         name = _name;
     }

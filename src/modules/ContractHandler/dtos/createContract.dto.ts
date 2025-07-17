@@ -9,7 +9,6 @@ export class CreateContractDto {
     contractName: string;
 
     @IsOptional()
-    @IsNumberString({}, { message: 'Initial value must be a number' })
     @Transform(({ value }) => ethers.parseEther(value))
-    initialValue?: ethers.BigNumberish;
+    initialValue: ethers.BigNumberish;
 }
