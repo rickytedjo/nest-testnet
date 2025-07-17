@@ -38,6 +38,11 @@ export class ContractService {
         );
 
         // Contract deployment
+
+        if(await provider.getBalance(wallet.address.toLowerCase()) < ethers.toBigInt(dto.initialValue ?? 0)) {
+                throw new Error('Insufficient funds');
+        }
+
         const contractInstance = await contract.deploy( dto.contractName ,{
             value: dto.initialValue ?? ethers.toBigInt(0)
         });
@@ -60,7 +65,7 @@ export class ContractService {
     }
     catch (error) {
         return {
-            status: 'error',
+            statusCode: error.statusCode,
             message: error.message || 'Contract creation failed',
         };}
     }
